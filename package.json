@@ -4,14 +4,17 @@
   "description": "A Node.js project",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "react-scripts build",
+    "deploy": "serverless deploy"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.7.0"
-  },
-  "dependencies": {
+    "jest": "^29.7.0",
+    "serverless": "^3.0.0",
+    "serverless-offline": "^13.8.0",
     "react-scripts": "^3.0.1"
-  }
+  },
+  "dependencies": {}
 }

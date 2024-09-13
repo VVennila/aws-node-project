@@ -1,4 +1,4 @@
-service: ce6-12sept-sls
+service: ven-ce6-node
 frameworkVersion: '3'
 
 provider:
@@ -15,6 +15,16 @@ functions:
       - httpApi:
           path: /
           method: get
+
+resources:
+  Resources:
+    DelfrinandoEmailSns:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: ven-email-topic
+        Subscription: 
+          - Protocol: "email"
+            Endpoint: "nilarajan@gmail.com"
 
 plugins:
   - serverless-offline
