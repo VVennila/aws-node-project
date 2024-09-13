@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is doing CICD with Serverless
 
 on:
   push:
-    branches: [ main, "*"]
+    branches: [ main, "*" ]
 
 jobs:
   deploy:
@@ -16,6 +16,16 @@ jobs:
       - name: Checkout repository code
         uses: actions/checkout@v3
 
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -24,9 +34,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint Code
+        run: npm run lint
+        # Uncomment this if you have linting configured in your package.json
+
+      - name: Run Tests
+        run: npm test
+        # Uncomment this if you have tests configured in your package.json
+
       - name: Deploy with Serverless
         run: npm run deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ap-southeast-1 
+          AWS_REGION: ap-southeast-1
+
+      - name: Notify on Success
+        if: success()
+        run: echo "Deployment succeeded"
+        # Add notifications or other success handling as needed
+
+      - name: Notify on Failure
+        if: failure()
+        run: echo "Deployment failed"
+        # Add notifications or other failure handling as needed

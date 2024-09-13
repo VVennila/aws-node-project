@@ -1,20 +1,16 @@
 {
   "name": "aws-node-project",
   "version": "1.0.0",
-  "description": "A Node.js project",
-  "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "build": "react-scripts build",
-    "deploy": "serverless deploy"
+    "start": "node index.js",
+    "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "react-scripts": "^5.0.1",
+    "serverless": "^3.39.0",
+    "serverless-offline": "^13.8.0"
+  },
   "devDependencies": {
-    "jest": "^29.7.0",
-    "serverless": "^3.0.0",
-    "serverless-offline": "^13.8.0",
-    "react-scripts": "^3.0.1"
-  },
-  "dependencies": {}
+    "jest": "^29.7.0"
+  }
 }
