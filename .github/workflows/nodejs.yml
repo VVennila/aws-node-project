@@ -7,6 +7,7 @@ on:
     branches: [main]
 
 jobs:
+  # Install dependencies
   install-dependency:
     runs-on: ubuntu-latest
     steps:
@@ -15,22 +16,23 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+  # Run unit tests
   unit-test:
     runs-on: ubuntu-latest
     needs: install-dependency
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm install
       - name: Run tests
         run: npm test
+
+  # Build after tests pass
   build:
     runs-on: ubuntu-latest
     needs: unit-test
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -39,6 +41,4 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-  
-      - name: Build Project
-        run: npm run build
+

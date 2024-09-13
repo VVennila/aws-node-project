@@ -4,11 +4,15 @@
   "description": "A Node.js project",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "react-scripts build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "react-scripts": "^5.0.1"
   }
 }
