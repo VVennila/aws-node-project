@@ -1,14 +1,20 @@
-org: steeng
-app: aws-node-project
-service: aws-node-project
+service: ce6-12sept-sls
 frameworkVersion: '3'
 
 provider:
   name: aws
-  region: ap-southeast-1
-  stage: dev 
   runtime: nodejs18.x
+  region: ap-southeast-1
 
 functions:
-  function1:
-    handler: index.handler
+  api:
+    handler: handler.handler
+    environment:
+      CLASS_NAME: "CE 6"
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+plugins:
+  - serverless-offline
