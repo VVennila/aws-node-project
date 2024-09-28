@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "react-scripts": "^5.0.1",
-    "serverless": "^4.0.0",
+    "serverless": "^4.2.5",
     "serverless-offline": "^13.8.0"
   },
   "devDependencies": {
