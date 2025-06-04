@@ -8,7 +8,7 @@
   "dependencies": {
     "react-scripts": "^5.0.1",
     "serverless": "^4.0.0",
-    "serverless-offline": "^13.8.0"
+    "serverless-offline": "^13.8.2"
   },
   "devDependencies": {
     "jest": "^29.7.0"
